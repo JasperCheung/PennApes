@@ -1,33 +1,72 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import DashCard from './Dash_card';
+import DashCard from './DashCard';
 
 class Dashboard extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            spent: 70,
-            earned: 50,
-        };
+    this.state = {
+      spent: 70,
+      dPercentSpent: 5,
+      earned: 50,
+      dPercentEarned: 10
+    };
+  }
+
+  getNet() {
+    return this.state.earned - this.state.spent;
+  }
+
+  formatNegativeDollar(dollars) {
+    let negative = dollars < 0 ? "-" : "";
+    dollars = Math.abs(dollars);
+    return `${negative}$${dollars}`;
+  }
+
+  percentMessage(percent) {
+    if (percent === 0) {
+      return "the usual";
+    } else if (percent > 0) {
+      return `${percent}% more than usual`;
+    } else {
+      return `${Math.abs(percent)}% less than usual`;
     }
+  }
 
-    get_net() {
-        return this.state.earned - this.state.spent;
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Dashboard</h1>
-
-                <h2>Last Week:</h2>
-                    <DashCard k="Spent" v={this.state.spent} showpercentage={true} percentage={5} reverse={true} />
-                    <DashCard k="Earned" v={this.state.earned} showpercentage={true} percentage={30} reverse={false} />
-                    <DashCard k="Net" v={this.get_net()} showpercentage={false} />
-            </div>
-        );
-    }
+  render() {
+    let spentPercentClass = this.state.dPercentSpent > 0 ? "red-text" : "green-text";
+    let earnedPercentClass = this.state.dPercentEarned < 0 ? "red-text" : "green-text";
+    let netPercentClass = this.getNet() < 0 ? "red-text" : "green-text";
+    return (
+      <div>
+        <center>
+          <h3>Last Week:</h3>
+          <div style={{width: 600}}>
+            <h4>
+              You spent {this.formatNegativeDollar(this.state.spent)}
+              <Link to="/spent" className={spentPercentClass}>
+                &nbsp;({this.percentMessage(this.state.dPercentSpent)})
+              </Link>
+            </h4>
+            <h4>
+              You earned {this.formatNegativeDollar(this.state.earned)}
+              <Link to="/earned" className={earnedPercentClass}>
+                &nbsp;({this.percentMessage(this.state.dPercentEarned)})
+              </Link>
+            </h4>
+            <h4>
+              Overall, your balance changed by 
+              <Link to="/net" className={netPercentClass}>
+                &nbsp;{this.formatNegativeDollar(this.getNet())}
+              </Link>
+            </h4>
+          </div>
+        </center>
+      </div>
+      );
+  }
 };
 
 export default Dashboard;
