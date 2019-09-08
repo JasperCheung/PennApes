@@ -10,15 +10,14 @@ const options = {
 };
 
 class Spent extends Component {
-    render() {
-        console.log(words);
-        return (
-            <div>
-                <p>Spent</p>
-                <ReactWordcloud words={words} options={options} />
-            </div>
-        );
-    }
+  render() {
+    console.log(words);
+    return (
+      <div style={{display: "flex", justifyContent: "center", alignContent: "center"}}>
+        <ReactWordcloud size={[500, 500]} words={words} options={options} />
+      </div>
+      );
+  }
 };
 
 export default Spent;
