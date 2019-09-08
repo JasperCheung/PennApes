@@ -13,7 +13,7 @@ import Spent from './components/Spent';
 import Net from './components/Net';
 
 const nav = (
-  <Navbar brand={<a href="/">&nbsp;PennApes</a>} alignLinks="right">
+  <Navbar brand={<a href="/">&nbsp;&nbsp;WalletWatch</a>} alignLinks="right">
     <NavItem href="/home">
       Home
     </NavItem>
