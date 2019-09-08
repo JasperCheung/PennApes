@@ -1,0 +1,7 @@
+{
+    "Transportation": ["MTA", "Uber", "Lyft", "ZipCar"],
+    "Food": ["Trader Joes", "Uber Eats", "Seamless", "Postmates", "Whole Foods", "GrubHub", "Chipotle"],
+    "Shopping": ["Macys", "Apple", "Samsung", "Nike", "Staples", "Amazon"],
+    "Subscriptions": ["New York Times", "Youtube Red", "Hulu", "Netflix", "Spotify"],
+    "Entertainment": ["AMC", "Apple iTunes"]
+}

@@ -1,34 +1,18 @@
-[
-  {
-    "text": "Spotify",
-    "value": 14
-  },
-  {
-    "text": "Whole Foods",
-    "value": 11
-  },
-  {
-    "text": "Chipotle",
-    "value": 16
-  },
-  {
-    "text": "Staples",
-    "value": 17
-  },
-  {
-    "text": "School",
-    "value": 13
-  },
-  {
-    "text": "123asdf",
-    "value": 15
-  },
-  {
-    "text": "aasdf",
-    "value": 20
-  },
-  {
-    "text": "Apple iTunes",
-    "value": 10
-  }
-]
+{
+  "AMC": 22,
+  "Apple iTunes": 9.99,
+
+  "Spotify": 9.99,
+  "New York Times": 8,
+  "Netflix": 10.99,
+
+  "Whole Foods": 55,
+  "Chipotle": 16,
+  "GrubHub": 34,
+
+  "Staples": 17,
+  "Amazon": 73,
+  "Nike": 29.35,
+
+  "Lyft": 12.67
+}
