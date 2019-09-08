@@ -7,15 +7,15 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { Navbar, NavItem } from 'react-materialize';
 
 import Info from './components/Info';
-import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 import Earned from './components/Earned';
 import Spent from './components/Spent';
 import Net from './components/Net';
 
 const nav = (
   <Navbar brand={<a href="/">&nbsp;PennApes</a>} alignLinks="right">
-    <NavItem href="/dashboard">
-      Dashboard
+    <NavItem href="/home">
+      Home
     </NavItem>
     <NavItem href="/spent">
       Spent
@@ -37,7 +37,7 @@ const router = (
     {nav}
 
     <Route exact path="/" component={Info} />
-    <Route exact path="/dashboard" component={Dashboard} />
+    <Route exact path="/home" component={Home} />
     <Route exact path="/spent" component={Spent} />
     <Route exact path="/earned" component={Earned} />
     <Route exact path="/net" component={Net} />

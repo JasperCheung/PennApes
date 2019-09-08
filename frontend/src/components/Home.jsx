@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Dashboard extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -27,9 +27,9 @@ class Dashboard extends Component {
     if (percent === 0) {
       return "the usual";
     } else if (percent > 0) {
-      return `${percent}% more than usual`;
+      return `${percent}% more `;
     } else {
-      return `${Math.abs(percent)}% less than usual`;
+      return `${Math.abs(percent)}% less `;
     }
   }
 
@@ -43,16 +43,18 @@ class Dashboard extends Component {
           <h3>Last Week:</h3>
           <div style={{width: 600}}>
             <h4>
-              You spent {this.formatNegativeDollar(this.state.spent)}
+              You spent {this.formatNegativeDollar(this.state.spent)} (
               <Link to="/spent" className={spentPercentClass}>
-                &nbsp;({this.percentMessage(this.state.dPercentSpent)})
+                {this.percentMessage(this.state.dPercentSpent)}
               </Link>
+              than usual)
             </h4>
             <h4>
-              You earned {this.formatNegativeDollar(this.state.earned)}
+              You earned {this.formatNegativeDollar(this.state.earned)} (
               <Link to="/earned" className={earnedPercentClass}>
-                &nbsp;({this.percentMessage(this.state.dPercentEarned)})
+                {this.percentMessage(this.state.dPercentEarned)}
               </Link>
+              than usual)
             </h4>
             <h4>
               Overall, your balance changed by 
@@ -67,4 +69,4 @@ class Dashboard extends Component {
   }
 };
 
-export default Dashboard;
+export default Home;
