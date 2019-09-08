@@ -11,6 +11,16 @@ const options = {
     fontFamily: 'sans',
 };
 
+const data = (() => {
+  let d = [];
+
+  for (const [k, v] of Object.entries(words)) {
+    d.push({ 'text': k, 'value': v, });
+  }
+
+  return d;
+})();
+
 class Spent extends Component {
     genData() {
         let d = [];
@@ -44,16 +54,16 @@ class Spent extends Component {
     render() {
         return (
             <div>
-                <p>Spent</p>
-                <div style={{display: "flex", justifyContent: "center", alignContent: "center"}}>
-                    <ReactWordcloud words={this.state.data} options={options} />
-                </div>
+          <h1>Spending</h1>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+                    <ReactWordcloud size={[700, 500]} words={this.state.data} options={options} />
 
                 <PieChart width={550} height={550}>
-                    <Pie data={this.state.data} dataKey="value" nameKey="text" cx="50%" cy="50%" innerRadius={70} outerRadius={100} fill="#8884d8" />
+                    <Pie data={data} dataKey="value" nameKey="text" cx="50%" cy="50%" innerRadius={70} outerRadius={100} fill="#8884d8" />
                     <Pie data={this.getCategoryData()} dataKey="value" nameKey="text" cx="50%" cy="50%" innerRadius={110} outerRadius={140} fill="#82ca9d" label={this.renderLabel} />
                     <Tooltip />
                 </PieChart>
+                </div>
             </div>
         );
     }

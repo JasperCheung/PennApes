@@ -4,7 +4,11 @@ class Earned extends Component {
 
   render() {
     return (
-      <p>Earned</p>
+      <div>
+        <h2>
+          On 8/23/19, you were paid ${this.props.earnings}
+        </h2>
+      </div>
     );
   }
 };

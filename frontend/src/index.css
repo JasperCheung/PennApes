@@ -15,3 +15,30 @@ code {
 nav {
   background-color: #85bb65 !important;
 }
+
+#home-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+}
+
+#info > div {
+  padding-top: 200px;
+  padding-bottom: 300px;
+}
+
+#anim-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+#fixed-element {
+  position: fixed;
+  top: 100px;
+  right: 200px;
+}

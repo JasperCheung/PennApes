@@ -1,72 +1,66 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import TrackVisibility from 'react-on-screen';
+
+import Summary from './Summary';
+import Earned from './Earned';
+import Spent from './Spent';
+import Net from './Net';
+
+import pigEarning from '../images/pig-earning.gif';
+import pigSpending from '../images/pig-spending.gif';
 
 class Home extends Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
-      spent: 70,
-      dPercentSpent: 5,
-      earned: 50,
-      dPercentEarned: 10
-    };
+      activePig: pigEarning,
+      counter: 0
+    }
   }
 
-  getNet() {
-    return this.state.earned - this.state.spent;
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, true);
   }
 
-  formatNegativeDollar(dollars) {
-    let negative = dollars < 0 ? "-" : "";
-    dollars = Math.abs(dollars);
-    return `${negative}$${dollars}`;
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-  percentMessage(percent) {
-    if (percent === 0) {
-      return "the usual";
-    } else if (percent > 0) {
-      return `${percent}% more `;
+  handleScroll = () => {
+    if (this.state.counter === 1) {
+      return;
+    }
+    if (window.scrollY < 700) {
+      this.setState({activePig: pigEarning});
+    } else if (window.scrollY < 1700) {
+      this.setState({counter: this.state.counter + 1});
+      this.setState({activePig: pigSpending});
     } else {
-      return `${Math.abs(percent)}% less `;
+      this.setState({activePig: pigSpending});
     }
   }
 
   render() {
-    let spentPercentClass = this.state.dPercentSpent > 0 ? "red-text" : "green-text";
-    let earnedPercentClass = this.state.dPercentEarned < 0 ? "red-text" : "green-text";
-    let netPercentClass = this.getNet() < 0 ? "red-text" : "green-text";
+    const options = {
+      onChange: this.handleIntersection,
+      root: "#home-container",
+      rootMargin: "0% 0% -25%",
+    };
+
     return (
-      <div>
-        <center>
-          <h3>Last Week:</h3>
-          <div style={{width: 600}}>
-            <h4>
-              You spent {this.formatNegativeDollar(this.state.spent)} (
-              <Link to="/spent" className={spentPercentClass}>
-                {this.percentMessage(this.state.dPercentSpent)}
-              </Link>
-              than usual)
-            </h4>
-            <h4>
-              You earned {this.formatNegativeDollar(this.state.earned)} (
-              <Link to="/earned" className={earnedPercentClass}>
-                {this.percentMessage(this.state.dPercentEarned)}
-              </Link>
-              than usual)
-            </h4>
-            <h4>
-              Overall, your balance changed by 
-              <Link to="/net" className={netPercentClass}>
-                &nbsp;{this.formatNegativeDollar(this.getNet())}
-              </Link>
-            </h4>
-          </div>
-        </center>
+      <div id="home-container" onScroll={this.handleScroll}>
+        <div id="info">
+          <Summary />
+          <Spent />
+          <Net />
+        </div>
+        <div id="anim-div">
+          <img id="fixed-element" src={this.state.activePig} />
+        </div>
       </div>
       );
-  }
+}
 };
 
 export default Home;

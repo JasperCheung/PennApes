@@ -17,13 +17,13 @@ const nav = (
     <NavItem href="/home">
       Home
     </NavItem>
-    <NavItem href="/spent">
+    <NavItem href="#spent">
       Spent
     </NavItem>
-    <NavItem href="/earned">
+    <NavItem href="#earned">
       Earned
     </NavItem>
-    <NavItem href="/net">
+    <NavItem href="#net">
       Net
     </NavItem>
     <NavItem href="/">

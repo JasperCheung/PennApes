@@ -53,6 +53,8 @@ class Net extends Component {
 
   render() {
     return (
+      <div>
+          <h1>Net Change</h1>
       <div style={{display:'flex', flexDirection:'row', alignItems:'center', height: '500px', paddingRight:"50px"}}  >
           <BarChart data={data}width={750} height={200} type={"bar"}
           >
@@ -74,6 +76,7 @@ class Net extends Component {
             </Bar>
           </BarChart>
       </div>
+    </div>
     );
   }
 };
